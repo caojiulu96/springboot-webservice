@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bamboocloud.mapper.UserMapper">
+
+	<resultMap type="user" id="UserResult">
+		<id property="userid" column="userid" />
+		<result property="username" column="username" />
+		<result property="fullname" column="fullname" />
+	</resultMap>
+
+
+
+	<select id="selectUserList"  resultMap="UserResult">
+		select u.userid,u.username, u.fullname from user u
+	</select>
+	
+	<insert id="addUser" parameterType="user" useGeneratedKeys="true" keyProperty="userid">
+ 		insert into user(
+ 			userid,username,fullname
+ 		)values(
+ 			#{userid},#{username},#{fullname}
+ 		)
+	</insert>
+
+
+
+</mapper> 
